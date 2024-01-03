@@ -1,80 +1,53 @@
-import React, { useState } from 'react';
+import { useState } from 'react'
 
+import './App.css'
 
+function App() {
 
-const Calculator = () => {
-  const [input, setInput] = useState('');
-  const [result, setResult] = useState(0);
+  const [counter, setCounter]  = useState(0)
 
-  const handleButtonClick = (value) => {
-    setInput((prevInput) => prevInput + value);
-  };
+  //let counter = 15
 
-  const handleClear = () => {
-    setInput('');
-    setResult(0);
-  };
+  const addValue = () => {
+    //counter = counter + 1
+    setCounter(counter + 1)
+    
+    
+  }
 
-  const handleCalculate = () => {
-    try {
-      setResult(eval(input));
-    } catch (error) {
-      setResult('Error');
-    }
-  };
+  const removeValue = () => {
+    setCounter(counter - 1)
+  }
 
+  const resetValue = () => {
+     setCounter(0)
+  }
+  
   return (
-    <div className='flex flex-col justify-center items-center bg-cyan-950  border-blue-600 border-2 border-dotted rounded-2xl'>
-      <h1 className='bg-green-400 p-2 m-2 rounded-2xl animate-pulse'>Simple Calculator</h1>
-      <div className=' flex bg-white w-auto  flex-row h-10 border-lime-300 p-1 rounded-md  border-2 '>
-        <input type="text" value={input} readOnly className=' rounded-lg border-0'
-        
-         />
-         <div>
-        <p className='p-1 mb-1 h-7 bg-white rounded-lg '> {result}</p>
-           </div>
+    <>
+      <h1>Pushpendra Kumar</h1>
+      <h2 className='bg-green-400'>practice Box: {counter}</h2>
 
-      </div>
-          <div className='m-2 rounded-xl bg-slate-500'>
+      <button
+            className='border-1 animate-pulse bg-orange-400 p-2 m-2 border-black'
 
-          <div className='m-1 space-x-2'>
-        <button onClick={() => handleButtonClick('0')}>0</button>
-        <button onClick={() => handleClear()}>C</button>
-        <button onClick={() => handleCalculate()}>=</button>
-        <button onClick={() => handleButtonClick('/')}>/</button>
-      </div>
+      onClick={addValue}
+      >Add value {counter}</button> 
+      <br />
+      <button
+      className='border-1 animate-pulse bg-orange-400 p-2 m-2 border-black'
+      onClick={removeValue}
+      >Remove value {counter}</button>
+      <p className='bg-green-400'>Practice Box: {counter}</p>
+      <br/>
 
-      <div className='m-1 space-x-2'>
-        <button onClick={() => handleButtonClick('1')}>1</button>
-        <button onClick={() => handleButtonClick('2')}>2</button>
-        <button onClick={() => handleButtonClick('3')}>3</button>
-        <button onClick={() => handleButtonClick('+')}>+</button>
-      </div>
-
-      <div className='m-1 space-x-2'>
-        <button onClick={() => handleButtonClick('4')}>4</button>
-        <button onClick={() => handleButtonClick('5')}>5</button>
-        <button onClick={() => handleButtonClick('6')}>6</button>
-        <button onClick={() => handleButtonClick('-')}>-</button>
-      </div>
-
-      <div className='m-1 space-x-2'>
-        <button onClick={() => handleButtonClick('7')}>7</button>
-        <button onClick={() => handleButtonClick('8')}>8</button>
-        <button onClick={() => handleButtonClick('9')}>9</button>
-        <button onClick={() => handleButtonClick('*')}>*</button>
-      </div>
-          </div>
+      <button
+      className='border-1 bg-yellow-500 text-black font-bold p-2 m-2 border-black'
+      onClick={resetValue}
+      >Set Value</button>
       
+    </>
+  )
+}
 
-      
-
-      
-    </div>
-  );
-};
-
-export default Calculator;
-
-
-// ////https://flexiple.com/react/react-fiber#section1
+export default App
